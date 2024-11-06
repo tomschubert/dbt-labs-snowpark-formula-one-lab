@@ -36,8 +36,15 @@ def model(dbt, session):
           return 2
 
   # we are dropping the columns that we filtered on in addition to our training variable
+<<<<<<< HEAD:models/marts/ml/prep/covariate_encoding.py
+  encoded_data = fil_cov.drop(['ACTIVE_DRIVER','ACTIVE_CONSTRUCTOR'], axis=1)
+  encoded_data['POSITION_LABEL'] = encoded_data['POSITION'].apply(lambda x: position_index(x))
+  encoded_data_grouped_target = encoded_data.drop(['POSITION'], axis=1)
+
+=======
   encoded_data = fil_cov.drop(['ACTIVE_DRIVER','ACTIVE_CONSTRUCTOR'],1)
   encoded_data['POSITION_LABEL']= encoded_data['DRIVER_POSITION'].apply(lambda x: position_index(x))
   encoded_data_grouped_target = encoded_data.drop(['DRIVER_POSITION'],1)
+>>>>>>> 5ceb301616300f29f2057edc70feb6f01fb72f7e:models/ml/prep_encoding_splitting/covariate_encoding.py
 
   return encoded_data_grouped_target
